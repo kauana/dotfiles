@@ -1,0 +1,54 @@
+format = """
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$python\
+$rust\
+$golang\
+$docker_context\
+$cmd_duration\
+$line_break\
+$character"""
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "bold cyan"
+
+[git_branch]
+format = "on [$symbol$branch]($style) "
+symbol = "\ue0a0 "
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+
+[cmd_duration]
+min_time = 2000
+format = "[$duration]($style) "
+
+[nodejs]
+format = "via [⬢ $version]($style) "
+symbol = ""
+
+[python]
+format = 'via [🐍 $version( \($virtualenv\))]($style) '
+symbol = ""
+
+[rust]
+format = "via [🦀 $version]($style) "
+symbol = ""
+
+[golang]
+format = "via [🐹 $version]($style) "
+symbol = ""
+
+[docker_context]
+format = "on [🐳 $context]($style) "
+
+[package]
+disabled = true
