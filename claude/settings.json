@@ -1,5 +1,11 @@
 {
   "includeCoAuthoredBy": false,
+  "model": "opus",
+  "statusLine": {
+    "type": "command",
+    "command": "uv run ~/.claude/statusline.py",
+    "padding": 0
+  },
   "enabledPlugins": {
     "explanatory-output-style@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
@@ -8,6 +14,5 @@
     "code-review@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": false
-  },
-  "model": "opus"
+  }
 }
