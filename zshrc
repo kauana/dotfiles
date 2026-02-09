@@ -1,7 +1,3 @@
-# Zsh completion
-autoload -Uz compinit
-compinit
-
 # Environment
 export DOTFILES="$HOME/dotfiles"
 export EDITOR="nvim"
@@ -10,9 +6,12 @@ export PATH="$HOME/.local/bin:$HOME/.bun/bin:$(go env GOPATH)/bin:$PATH"
 
 # Sheldon plugin manager
 eval "$(sheldon source)"
-bindkey '^f' autosuggest-accept
-bindkey '^a' beginning-of-line
-bindkey '^e' end-of-line
+
+# Zsh completion (after sheldon so zsh-completions fpath is available)
+autoload -Uz compinit
+compinit
+bindkey -e
+# bindkey '^f' autosuggest-accept
 
 # Tool inits
 eval "$(fnm env --use-on-cd)"
@@ -23,8 +22,8 @@ source <(fzf --zsh)
 eval "$(starship init zsh)"
 
 # Aliases
-alias ls="eza --icons"
-alias ll="eza -la --icons"
+alias ls="eza --icons=always"
+alias ll="eza -la --icons=always"
 alias cat="bat"
 alias cd="z"
 alias vim="nvim"
