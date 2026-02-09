@@ -3,7 +3,7 @@ set shell := ["bash", "-cu"]
 dotfiles := env("HOME") / "dotfiles"
 
 # Run full setup
-setup: backup brew symlinks gitconfig-setup shell
+setup: backup brew symlinks gitconfig-setup shell claude-plugins
   @echo "Setup complete! Run 'exec zsh' to reload your shell."
 
 # Backup old dotfiles repo
@@ -128,6 +128,40 @@ shell:
     echo "Changing default shell to zsh (may require password)..."
     chsh -s "$zsh_path" || echo "Warning: chsh failed. Run manually: chsh -s $zsh_path"
   fi
+
+# Install Claude Code plugins
+claude-plugins:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    if ! command -v claude &>/dev/null; then
+        echo "⚠ claude not found, skipping plugin setup"
+        exit 0
+    fi
+
+    marketplaces=(
+        "anthropics/claude-plugins-official"
+    )
+
+    plugins=(
+        "code-review@claude-plugins-official"
+        "context7@claude-plugins-official"
+        "explanatory-output-style@claude-plugins-official"
+        "pyright-lsp@claude-plugins-official"
+        "typescript-lsp@claude-plugins-official"
+    )
+
+    for m in "${marketplaces[@]}"; do
+        echo "→ Marketplace: $m"
+        claude plugin marketplace add "$m" 2>/dev/null || true
+    done
+
+    for p in "${plugins[@]}"; do
+        echo "→ Plugin: $p"
+        claude plugin install "$p" 2>/dev/null || true
+    done
+
+    echo "✓ Claude plugins ready"
 
 # Update packages and plugins
 update:

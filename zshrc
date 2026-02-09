@@ -6,6 +6,7 @@ export PATH="$HOME/.local/bin:$HOME/.bun/bin:$PATH"
 
 # Sheldon plugin manager
 eval "$(sheldon source)"
+bindkey '^f' autosuggest-accept
 
 # Tool inits
 eval "$(fnm env --use-on-cd)"
@@ -23,6 +24,7 @@ alias vim="nvim"
 alias python="python3"
 alias pip="pip3"
 alias k="kubectl"
+alias lg="lazygit"
 alias path='echo $PATH | tr ":" "\n"'
 alias chrome-debug='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222'
 
@@ -30,3 +32,7 @@ mkd() { mkdir -p "$1" && cd "$1" }
 
 # Local overrides
 [[ -f ~/.zshlocal ]] && source ~/.zshlocal
+
+alias gst='git status'
+
+alias gp='git pull'
