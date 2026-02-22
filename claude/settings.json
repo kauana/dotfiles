@@ -2,7 +2,9 @@
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
-      "Read(*)"
+      "Read(*)",
+      "mcp__chrome-devtools__*",
+      "mcp__plugin_atlassian_atlassian__*"
     ],
     "deny": [
       "Bash(gh pr comment *)",

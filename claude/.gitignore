@@ -86,3 +86,5 @@ teams
 session-env/
 downloads/
 ide/
+skills/*/evals/
+skills/*-workspace/
