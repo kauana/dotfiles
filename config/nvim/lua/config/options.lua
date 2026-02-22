@@ -3,3 +3,5 @@
 -- Add any additional options here
 
 vim.opt.relativenumber = false
+vim.opt.formatexpr = ""
+vim.opt.clipboard = "unnamedplus"

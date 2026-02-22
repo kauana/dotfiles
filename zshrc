@@ -40,5 +40,4 @@ mkd() { mkdir -p "$1" && cd "$1" }
 [[ -f ~/.zshlocal ]] && source ~/.zshlocal
 
 alias gst='git status'
-
 alias gp='git pull'
